@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boyond.mapper.RescorcesMapper" >
+
+    <!--添加资源-->
+    <insert id="addResource" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into core_resources (name,describe,type,category,parent_id,url,system_id,icon,sort,favorite_id,able_del,
+	able_edit,able_show,is_deleted,create_time,creator,update_time,mender,uuid) values (
+	#{name},#{describe},#{type},#{category},#{parent_id},#{url},#{system_id},#{icon},#{sort},#{favorite_id},#{able_del},
+	#{able_edit},#{able_show},#{is_deleted},#{create_time},#{creator},#{update_time},#{mender},#{uuid}
+	)
+    </insert>
+
+    <!--根据id删除-->
+    <delete id="deleteById" >
+        delete from core_resources where id=#{id}
+    </delete>
+
+    <!--修改-->
+    <update id="updateResource" >
+        update core_resources set name=#{name},describe=#{describe},type=#{type},category=#{category},parent_id=#{parent_id},url=#{url},system_id=#{system_id},icon=#{icon},sort=#{sort},favorite_id=#{favorite_id},able_del=#{able_del},
+        able_edit=#{able_edit},able_show=#{able_show},is_deleted=#{is_deleted},create_time=#{create_time},creator=#{creator},update_time=#{update_time},mender=#{mender},uuid=#{uuid}
+    </update>
+
+    <!--根据id查找-->
+    <select id="findById" resultType="com.boyond.mapper.RescorcesMapper">
+        select * from core_resources where id=#{id}
+    </select>
+
+    <!--查找全部-->
+    <select id="findAll" resultType="com.boyond.mapper.RescorcesMapper">
+        select * from core_resources;
+    </select>
+</mapper>
